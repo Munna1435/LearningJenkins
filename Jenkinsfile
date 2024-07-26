@@ -3,7 +3,7 @@ pipeline{
   stages{
     stage('Build'){
       steps{
-        echo "Hello Build Number ${env.BUILD_NUMBER} and Build Id ${BUILD_ID}"
+        echo "Hello Build Number ${env.BUILD_NUMBER} and Build Id ${env.BUILD_ID}"
       }
     }
     stage('Test'){
