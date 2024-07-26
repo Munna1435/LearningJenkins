@@ -13,7 +13,11 @@ pipeline{
         script{
           getBuildNumber = {
             if(params.BUILD_NUMBER_CHOICE == "Auto")
+            {
+              echo "Auto ${env.BUILD_NUMBER}"
               return env.BUILD_NUMBER
+            }
+            echo "Manual ${env.BUILD_NUMBER}"
             return env.MANUAL_BUILD_NUMBER
           }
         }
@@ -26,7 +30,7 @@ pipeline{
         echo getBuildNumber()
       }
     }
-    
+
     stage('Test'){
       steps{
         echo 'Hello Testing'
