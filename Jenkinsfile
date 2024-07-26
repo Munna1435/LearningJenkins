@@ -11,7 +11,7 @@ pipeline{
     stage('Setup'){
       steps{
         script{
-          def getBuildNumber(){
+          getBuildNumber = {
             if(params.BUILD_NUMBER_CHOICE == "Auto")
               return env.BUILD_NUMBER
             return env.MANUAL_BUILD_NUMBER
