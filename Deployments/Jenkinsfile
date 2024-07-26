@@ -3,6 +3,7 @@ pipeline{
 
   environment{
     DOCKER_HUB_LOGIN = credentials('5118029c-7738-4af3-81b1-9887f0edf750')
+    DOCKER_IMAGE_NAME = "munnakumar/demo"
   }
 
   parameters{
@@ -30,9 +31,21 @@ pipeline{
 
     stage('Build'){
       steps{
-        echo "Hello Build Number ${env.BUILD_NUMBER} and Build Id ${env.BUILD_ID}"
-        echo '${DOCKER_HUB_LOGIN_USR} ${DOCKER_HUB_LOGIN_PSW}'
-        echo getBuildNumber()
+        script{
+          def BUILD_NUM = getBuildNumber()
+          sh """ 
+            set +x
+            ls -a
+            
+            echo $DOCKER_HUB_LOGIN_PSW | docker login --username $DOCKER_HUB_LOGIN_USR --password-stdin 
+            docker build --file ./WebApplication1/Dockerfile -t ${DOCKER_IMAGE_NAME}:${BUILD_NUM} .
+            docker tag ${DOCKER_IMAGE_NAME}:${BUILD_NUM} ${DOCKER_IMAGE_NAME}:latest 
+            docker push ${DOCKER_IMAGE_NAME}:${BUILD_NUM}
+            docker push ${DOCKER_IMAGE_NAME}:latest
+
+            ls -a
+          """
+        }
       }
     }
 
