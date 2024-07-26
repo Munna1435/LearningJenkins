@@ -17,7 +17,7 @@ pipeline{
               echo "Auto ${env.BUILD_NUMBER}"
               return env.BUILD_NUMBER
             }
-            echo "Manual ${env.BUILD_NUMBER}"
+            echo "Manual ${env.MANUAL_BUILD_NUMBER}"
             return env.MANUAL_BUILD_NUMBER
           }
         }
