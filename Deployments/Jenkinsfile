@@ -31,7 +31,7 @@ pipeline{
     stage('Build'){
       steps{
         echo "Hello Build Number ${env.BUILD_NUMBER} and Build Id ${env.BUILD_ID}"
-        echo '$DOCKER_HUB_LOGIN_USR $DOCKER_HUB_LOGIN_PSW'
+        echo '${DOCKER_HUB_LOGIN_USR} ${DOCKER_HUB_LOGIN_PSW}'
         echo getBuildNumber()
       }
     }
