@@ -1,6 +1,10 @@
 pipeline{
   agent any
 
+  environment{
+    DOCKER_HUB_LOGIN = credentials('5118029c-7738-4af3-81b1-9887f0edf750')
+  }
+
   parameters{
     choice(name: 'BUILD_NUMBER_CHOICE', choices: ['Auto', 'Manual'], description: 'Select the choice you wanna to increament the build number')
     string(name: 'MANUAL_BUILD_NUMBER', defaultValue: '1', description: 'Enter the build number')
@@ -27,6 +31,7 @@ pipeline{
     stage('Build'){
       steps{
         echo "Hello Build Number ${env.BUILD_NUMBER} and Build Id ${env.BUILD_ID}"
+        echo "${DOCKER_HUB_LOGIN_USR} ${DOCKER_HUB_LOGIN_PSW}"
         echo getBuildNumber()
       }
     }
