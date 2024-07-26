@@ -1,5 +1,7 @@
 pipeline{
-  agent any
+  agent {
+        docker { image 'node:20.16.0-alpine3.20' }
+    }
 
   environment{
     DOCKER_HUB_LOGIN = credentials('5118029c-7738-4af3-81b1-9887f0edf750')
