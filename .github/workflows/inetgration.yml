@@ -26,4 +26,4 @@ jobs:
           with:
             context: .
             push: true
-            tags: {{ vars.GITHUB_USERNAME }}/solar-system:${{github.sha}}
+            tags: ${{ vars.GITHUB_USERNAME }}/demo:${{github.sha}}
