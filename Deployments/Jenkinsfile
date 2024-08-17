@@ -2,7 +2,6 @@ pipeline{
   agent any
 
   environment{
-    DOCKER_HOST = 'unix:///var/run/docker.sock'
     DOCKER_HUB_LOGIN = credentials('5118029c-7738-4af3-81b1-9887f0edf750')
     DOCKER_REGISTRY = "https://index.docker.io/v1/"
     DOCKER_IMAGE_NAME = "munnakumar/demo"
