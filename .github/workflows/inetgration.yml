@@ -24,6 +24,6 @@ jobs:
         - name: Build and push image
           uses: docker/build-push-action@v3
           with:
-            context: WebApplication1/Dockerfile
+            context: WebApplication1
             push: true
             tags: ${{ vars.DOCKERHUB_USERNAME }}/demo:${{github.sha}}
